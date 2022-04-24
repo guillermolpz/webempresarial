@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}La sabrosa - Blog {%endblock%}
+{% block content %}
+<!--Contenido -->
+{% for blog in blogs %}
+<div class="contenido-blog">
+  <div class="row blog">
+    <div class="text-center rounded">
+      <h2 class="section-heading mb-5">
+        <span class="section-heading-upper">{{ blog.published|date:"SHORT_DATE_FORMAT" }}</span>
+        <span class="section-heading-lower">{{ blog.title }}</span>
+      </h2>
+      <p class="mb-0">
+        <img
+          class="mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+          src="{{blog.image.url}}"
+          alt=""
+        />
+      </p>
+      <p class="texto mb-0 mbt">{{ blog.content|linebreaks }}</p>
+      <p class="card-footer">
+        <span>
+          Publicado por <b>{{ blog.author }} en </b> 
+          {% for category in blog.categories.all%}
+          <a href="#">{{ category.name }}</a> {% if not forloop.last  %} - {% endif %}
+          {% endfor %}
+          <!--<a href="#">Oferta</a>-->
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
