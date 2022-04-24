@@ -38,7 +38,6 @@ _Ejemplo una ampliación web para restaurantes con Django en la cual se puede re
     py -m venv env
     o
     virtualenv env
-
     ```
 * Instalar librerías necesarias
     ```
